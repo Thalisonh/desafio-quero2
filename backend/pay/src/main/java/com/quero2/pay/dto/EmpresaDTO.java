@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.quero2.pay.entities.Empresa;
+import com.quero2.pay.entities.Endereco;
 import com.quero2.pay.entities.Funcionario;
 
 public class EmpresaDTO {
 
 	private Long id;
 	private String nome;
-	private Long endereco_id;
+	private EnderecoDTO endereco;
 	private String telefone;
 	private List<FuncionarioDTO> funcionarios = new ArrayList<>();
 	
@@ -18,10 +19,10 @@ public class EmpresaDTO {
 		
 	}
 
-	public EmpresaDTO(Long id, String nome, Long endereco_id, String telefone, List<FuncionarioDTO> funcionarios) {
+	public EmpresaDTO(Long id, String nome, EnderecoDTO endereco, String telefone, List<FuncionarioDTO> funcionarios) {
 		this.id = id;
 		this.nome = nome;
-		this.endereco_id = endereco_id;
+		this.endereco = endereco;
 		this.telefone = telefone;
 		this.funcionarios = funcionarios;
 	}
@@ -29,16 +30,21 @@ public class EmpresaDTO {
 	public EmpresaDTO(Empresa entity) {
 		id = entity.getId();
 		nome = entity.getNome();
-		endereco_id = entity.getEndereco().getId();
 		telefone = entity.getTelefone();
 	}
 	
-	public EmpresaDTO(Empresa entity, List<Funcionario> funcionarios) {
+	public EmpresaDTO(Empresa entity, Endereco enderecoEntity) {
 		this(entity);//chama o contrutor de cima
 		
-		//para cada funcionario recebido passa para a lista de funcionarios
-		funcionarios.forEach(fun -> this.funcionarios.add(new FuncionarioDTO(fun)));
+		endereco = new EnderecoDTO(enderecoEntity);
 	}
+	
+//	public EmpresaDTO(Empresa entity, List<Funcionario> funcionarios) {
+//		this(entity);//chama o contrutor de cima
+//		
+//		//para cada funcionario recebido passa para a lista de funcionarios
+//		funcionarios.forEach(fun -> this.funcionarios.add(new FuncionarioDTO(fun)));
+//	}
 
 	public Long getId() {
 		return id;
@@ -56,12 +62,12 @@ public class EmpresaDTO {
 		this.nome = nome;
 	}
 
-	public Long getEndereco_id() {
-		return endereco_id;
+	public EnderecoDTO getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereco_id(Long endereco_id) {
-		this.endereco_id = endereco_id;
+	public void setEndereco(EnderecoDTO endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getTelefone() {

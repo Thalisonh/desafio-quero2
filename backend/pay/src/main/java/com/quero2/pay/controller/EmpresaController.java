@@ -17,7 +17,7 @@ import com.quero2.pay.dto.EmpresaDTO;
 import com.quero2.pay.service.EmpresaService;
 
 @RestController
-@RequestMapping(name = "/empresas")
+@RequestMapping(value = "/empresas")
 public class EmpresaController {
 	
 	@Autowired

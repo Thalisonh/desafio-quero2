@@ -2,6 +2,7 @@ package com.quero2.pay.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Empresa {
 	private Long id;
 	private String nome;
 	
-	@OneToOne(mappedBy = "empresa")
+	@OneToOne(mappedBy = "empresa", cascade=CascadeType.PERSIST)
 	private Endereco endereco;
 	
 	private String telefone;

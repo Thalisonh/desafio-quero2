@@ -1,5 +1,6 @@
 package com.quero2.pay.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Endereco {
 	private String localidade;
 	private String estado;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	

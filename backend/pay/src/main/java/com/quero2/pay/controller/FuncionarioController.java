@@ -17,7 +17,7 @@ import com.quero2.pay.dto.FuncionarioDTO;
 import com.quero2.pay.service.FuncionarioService;
 
 @RestController
-@RequestMapping(name = "/funcionarios")
+@RequestMapping(value = "/funcionarios")
 public class FuncionarioController {
 	
 	@Autowired
@@ -30,12 +30,12 @@ public class FuncionarioController {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<FuncionarioDTO> findById(@PathVariable Long id){
-		FuncionarioDTO dto = service.findById(id);
-		
-		return ResponseEntity.ok().body(dto);
-	}
+//	@GetMapping("/{id}")
+//	public ResponseEntity<FuncionarioDTO> findById(@PathVariable Long id){
+//		FuncionarioDTO dto = service.findById(id);
+//		
+//		return ResponseEntity.ok().body(dto);
+//	}
 	
 	@PostMapping
 	public ResponseEntity<FuncionarioDTO> insert(@RequestBody FuncionarioDTO dto){

@@ -1,5 +1,6 @@
 package com.quero2.pay.dto;
 
+import com.quero2.pay.entities.Empresa;
 import com.quero2.pay.entities.Endereco;
 
 public class EnderecoDTO {
@@ -40,6 +41,11 @@ public class EnderecoDTO {
 		localidade = entity.getLocalidade();
 		estado = entity.getEstado();
 		empresa_id = entity.getEmpresa().getId();
+	}
+	
+	public EnderecoDTO(Endereco entity, Empresa user) {
+		this(entity);
+		empresa_id = user.getId();
 	}
 
 	public Long getId() {
