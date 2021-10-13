@@ -4,7 +4,11 @@ import { Table } from "react-bootstrap";
 import { FuncionarioPage } from "../../types/funcionarios";
 import PaginationFuncionario from "../PaginationFuncionario";
 
-function TableFuncionarios() {
+type Props = {
+  idEmpresa: string | undefined;
+}
+
+function TableFuncionarios(idEmpresa : Props) {
   const [activePage, setActivePage] = useState(0);
 
   const [page, setPage] = useState<FuncionarioPage>({
@@ -17,7 +21,7 @@ function TableFuncionarios() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/contatos?page=${activePage}&size=10`)
+      .get(`http://localhost:8080/funcionarios/${idEmpresa.idEmpresa}?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });
@@ -33,7 +37,6 @@ function TableFuncionarios() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
             <th>id</th>
             <th>Nome</th>
             <th>Cargo</th>

@@ -12,8 +12,7 @@ function Routes() {
         <Route path="/" exact>
           <App />
         </Route>
-        <Route path="/empresa/:id">
-          <Empresa/>
+        <Route path="/empresa/:id" component={Empresa}>
         </Route>
         <Route path="/cadastrar">
           <NovaEmpresa />

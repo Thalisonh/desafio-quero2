@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.quero2.pay.entities.Empresa;
 import com.quero2.pay.entities.Endereco;
-import com.quero2.pay.entities.Funcionario;
 
 public class EmpresaDTO {
 

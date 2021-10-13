@@ -1,12 +1,12 @@
 package com.quero2.pay.service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.quero2.pay.dto.FuncionarioDTO;
@@ -22,10 +22,14 @@ public class FuncionarioService {
 	@Autowired
 	private FuncionarioRepository repository;
 	
-	public List<FuncionarioDTO> findAll(){
-		List<Funcionario> list = repository.findAll();
+	public Page<FuncionarioDTO> findAll(Pageable pageable, Long id){
 		
-		return list.stream().map(x -> new FuncionarioDTO(x)).collect(Collectors.toList());
+		Empresa empresa = new Empresa();
+		empresa.setId(id);
+		
+		Page<Funcionario> list = repository.findByEmpresa(empresa, pageable);
+		
+		return list.map(x -> new FuncionarioDTO(x));
 	}
 	
 	public FuncionarioDTO findById(Long id){

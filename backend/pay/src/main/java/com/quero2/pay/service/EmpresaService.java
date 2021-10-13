@@ -1,21 +1,19 @@
 package com.quero2.pay.service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quero2.pay.dto.EmpresaDTO;
 import com.quero2.pay.dto.EnderecoDTO;
-import com.quero2.pay.dto.FuncionarioDTO;
 import com.quero2.pay.entities.Empresa;
 import com.quero2.pay.entities.Endereco;
-import com.quero2.pay.entities.Funcionario;
 import com.quero2.pay.repositories.EmpresaRepository;
 import com.quero2.pay.repositories.EnderecoRepository;
 import com.quero2.pay.repositories.FuncionarioRepository;
@@ -38,10 +36,10 @@ public class EmpresaService {
 	private FuncionarioRepository funcionarioRepository;
 
 	@Transactional(readOnly = true)
-	public List<EmpresaDTO> findAll() {
-		List<Empresa> empresas = repository.findAll();
+	public Page<EmpresaDTO> findAll(Pageable pageable) {
+		Page<Empresa> empresas = repository.findAll(pageable);
 
-		return empresas.stream().map(x -> new EmpresaDTO(x)).collect(Collectors.toList());
+		return empresas.map(x -> new EmpresaDTO(x));
 	}
 
 	@Transactional(readOnly = true)

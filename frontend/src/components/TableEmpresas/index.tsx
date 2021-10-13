@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { EmpresaPage } from "../../types/empresa";
+import ButtonFuncionarios from "../ButtonFuncionarios";
 import PaginationEmpresa from "../PaginationEmpresa";
 
 function TableEmpresa() {
@@ -18,7 +19,7 @@ function TableEmpresa() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/contatos?page=${activePage}&size=10`)
+      .get(`http://localhost:8080/empresas?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });
@@ -46,7 +47,7 @@ function TableEmpresa() {
               <td>{item.id}</td>
               <td>{item.nome}</td>
               <td>{item.telefone}</td>
-              <td><Button>Visualiar</Button></td>
+              <td><ButtonFuncionarios idEmpresa={item.id}/></td>
             </tr>
           ))}
         </tbody>

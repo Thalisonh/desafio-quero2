@@ -2,8 +2,15 @@ import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import TableFuncionarios from "../../components/TableFuncionarios";
+import { useParams } from "react-router-dom";
+
+type EmpresaParams = {
+  id?: string | undefined;
+};
 
 function Empresa() {
+  const {id} = useParams<EmpresaParams>();
+
   return (
     <>
       <Container>
@@ -27,7 +34,7 @@ function Empresa() {
             </Col>
           </Row>
         </Form>
-        <TableFuncionarios />
+        <TableFuncionarios idEmpresa={id}/>
       </Container>
     </>
   );

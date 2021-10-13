@@ -1,8 +1,8 @@
 package com.quero2.pay.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +23,9 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioService service;
 	
-	@GetMapping
-	public ResponseEntity<List<FuncionarioDTO>> findAll(){
-		List<FuncionarioDTO> list = service.findAll();
+	@GetMapping("/{id}")
+	public ResponseEntity<Page<FuncionarioDTO>> findAll(Pageable pageable, @PathVariable Long id){
+		Page<FuncionarioDTO> list = service.findAll(pageable, id);
 		
 		return ResponseEntity.ok().body(list);
 	}
