@@ -28,6 +28,8 @@ public class EnderecoController {
 		endereco.setNumero(dto.getNumero());
 		endereco.setEmpresa_id(dto.getEmpresa_id());
 		
+		service.insert(endereco);
+		
 		return ResponseEntity.ok().body(endereco); 
 	}
 	

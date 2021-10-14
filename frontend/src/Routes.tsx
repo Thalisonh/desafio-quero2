@@ -3,7 +3,8 @@ import App from "./App";
 import Empresa from "./pages/Empresa";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import NovaEmpresa from "./pages/NovaEmpresa";
+import NovaEmpresa from "./pages/Enderecos";
+import Enderecos from "./pages/Enderecos";
 
 function Routes() {
   return (
@@ -14,8 +15,8 @@ function Routes() {
         </Route>
         <Route path="/empresa/:id" component={Empresa}>
         </Route>
-        <Route path="/cadastrar">
-          <NovaEmpresa />
+        <Route path="/endereco">
+          <Enderecos />
         </Route>
       </Switch>
     </BrowserRouter>

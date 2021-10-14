@@ -10,12 +10,6 @@ type EmpresaParams = {
   id?: string | undefined;
 };
 
-interface Funcionario {
-  name: string;
-  X: number;
-  Y: number;
-}
-
 function Empresa() {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");

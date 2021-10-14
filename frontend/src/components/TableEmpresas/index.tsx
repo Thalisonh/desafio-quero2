@@ -4,6 +4,7 @@ import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { EmpresaPage } from "../../types/empresa";
 import ButtonDeleteEmpresa from "../ButtonDeleteEmpresa";
+import ButtonEnderecos from "../ButtonEnderecos";
 import ButtonFuncionarios from "../ButtonFuncionarios";
 import PaginationEmpresa from "../PaginationEmpresa";
 
@@ -39,7 +40,6 @@ function TableEmpresa() {
             <th>ID</th>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>Visualizar</th>
           </tr>
         </thead>
         <tbody>
@@ -48,8 +48,15 @@ function TableEmpresa() {
               <td>{item.id}</td>
               <td>{item.nome}</td>
               <td>{item.telefone}</td>
-              <td><ButtonFuncionarios idEmpresa={item.id}/></td>
-            <td><ButtonDeleteEmpresa idEmpresa={item.id}/></td>
+              <td>
+                <ButtonFuncionarios idEmpresa={item.id} />
+              </td>
+              <td>
+                <ButtonEnderecos idEmpresa={item.id} />
+              </td>
+              <td>
+                <ButtonDeleteEmpresa idEmpresa={item.id} />
+              </td>
             </tr>
           ))}
         </tbody>
