@@ -22,7 +22,7 @@ public class Endereco {
 	private String localidade;
 	private String estado;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne
 	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	

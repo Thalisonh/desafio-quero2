@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 type Props = {
-    idEmpresa: number;
-}
+  idEmpresa: number;
+};
 
-function ButtonFuncionarios(idEmpresa : Props){
-    var link = `/empresa/${idEmpresa.idEmpresa}`
-    return(
-        
-        <button type="button" className="btn btn-success">
-        <Link to={link}>
-            Visualizar
-        </Link>
+function ButtonFuncionarios(idEmpresa: Props) {
+  var link = `/empresa/${idEmpresa.idEmpresa}`;
+  return (
+    <button type="button" className="btn btn-success">
+      <Link to={link}>Visualizar</Link>
     </button>
-    )
+  );
 }
-export default ButtonFuncionarios
+export default ButtonFuncionarios;

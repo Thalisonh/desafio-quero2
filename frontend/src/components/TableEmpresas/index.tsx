@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { EmpresaPage } from "../../types/empresa";
+import ButtonDeleteEmpresa from "../ButtonDeleteEmpresa";
 import ButtonFuncionarios from "../ButtonFuncionarios";
 import PaginationEmpresa from "../PaginationEmpresa";
 
@@ -48,6 +49,7 @@ function TableEmpresa() {
               <td>{item.nome}</td>
               <td>{item.telefone}</td>
               <td><ButtonFuncionarios idEmpresa={item.id}/></td>
+            <td><ButtonDeleteEmpresa idEmpresa={item.id}/></td>
             </tr>
           ))}
         </tbody>

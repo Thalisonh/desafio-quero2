@@ -18,7 +18,7 @@ public class Empresa {
 	private Long id;
 	private String nome;
 	
-	@OneToOne(mappedBy = "empresa", cascade=CascadeType.PERSIST)
+	@OneToOne(mappedBy = "empresa", cascade=CascadeType.ALL)
 	private Endereco endereco;
 	
 	private String telefone;
