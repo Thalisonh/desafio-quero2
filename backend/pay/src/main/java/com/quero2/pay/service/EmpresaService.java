@@ -11,12 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quero2.pay.dto.EmpresaDTO;
-import com.quero2.pay.dto.EnderecoDTO;
 import com.quero2.pay.entities.Empresa;
-import com.quero2.pay.entities.Endereco;
 import com.quero2.pay.repositories.EmpresaRepository;
-import com.quero2.pay.repositories.EnderecoRepository;
-import com.quero2.pay.repositories.FuncionarioRepository;
 import com.quero2.pay.service.exceptions.DatabaseException;
 import com.quero2.pay.service.exceptions.ResourceNotFoundException;
 
@@ -26,20 +22,11 @@ public class EmpresaService {
 	@Autowired
 	private EmpresaRepository repository;
 
-	@Autowired
-	private EnderecoRepository enderecoRepository;
-	
-	@Autowired
-	private EnderecoService enderecoService;
-
-	@Autowired
-	private FuncionarioRepository funcionarioRepository;
-
 	@Transactional(readOnly = true)
 	public Page<EmpresaDTO> findAll(Pageable pageable) {
 		Page<Empresa> empresas = repository.findAll(pageable);
 
-		return empresas.map(x -> new EmpresaDTO(x));
+		return empresas.map(x -> new EmpresaDTO(x, x.getEndereco()));
 	}
 
 	@Transactional(readOnly = true)
@@ -47,7 +34,7 @@ public class EmpresaService {
 		Optional<Empresa> obj = repository.findById(id);
 		Empresa entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 
-		return new EmpresaDTO(entity);
+		return new EmpresaDTO(entity, entity.getFuncionario(), entity.getEndereco());
 	}
 
 	@Transactional
@@ -80,21 +67,6 @@ public class EmpresaService {
 	public void copyDtoToEntity(EmpresaDTO dto, Empresa entity) {
 		entity.setNome(dto.getNome());
 		entity.setTelefone(dto.getTelefone());
-
-//		Optional<Endereco> enderecoObj = enderecoRepository.findById(dto.getEndereco_id());
-//		Endereco endereco = enderecoObj.orElseThrow(() -> new ResourceNotFoundException("Entity Endereco not found"));
-//		entity.setEndereco(endereco);
-//		EnderecoDTO enderecoDTO = dto.getEndereco();
-//		Endereco endereco = new Endereco();
-//		enderecoService.copyDtoToEntity(endereco, enderecoDTO);
-//		entity.setEndereco(endereco);
-
-//		for (FuncionarioDTO funcionarioDTO : dto.getFuncionarios()) {
-//			Optional<Funcionario> funcionarioObj = funcionarioRepository.findById(funcionarioDTO.getId());
-//			Funcionario funcionario = funcionarioObj
-//					.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-//			entity.getFuncionario().add(funcionario);
-//		}
 	}
 
 }

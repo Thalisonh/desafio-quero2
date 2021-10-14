@@ -1,5 +1,7 @@
 package com.quero2.pay.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,22 +25,22 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioService service;
 	
-	@GetMapping("/{id}")
+	@GetMapping("/empresas/{id}")
 	public ResponseEntity<Page<FuncionarioDTO>> findAll(Pageable pageable, @PathVariable Long id){
 		Page<FuncionarioDTO> list = service.findAll(pageable, id);
 		
 		return ResponseEntity.ok().body(list);
 	}
 	
-//	@GetMapping("/{id}")
-//	public ResponseEntity<FuncionarioDTO> findById(@PathVariable Long id){
-//		FuncionarioDTO dto = service.findById(id);
-//		
-//		return ResponseEntity.ok().body(dto);
-//	}
+	@GetMapping("/{id}")
+	public ResponseEntity<FuncionarioDTO> findById(@PathVariable Long id){
+		FuncionarioDTO dto = service.findById(id);
+		
+		return ResponseEntity.ok().body(dto);
+	}
 	
 	@PostMapping
-	public ResponseEntity<FuncionarioDTO> insert(@RequestBody FuncionarioDTO dto){
+	public ResponseEntity<FuncionarioDTO> insert(@Valid @RequestBody FuncionarioDTO dto){
 		FuncionarioDTO empresa = service.insert(dto);
 		
 		return ResponseEntity.ok().body(empresa);
