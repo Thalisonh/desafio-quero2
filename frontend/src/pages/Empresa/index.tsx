@@ -17,33 +17,37 @@ interface Funcionario {
 }
 
 function Empresa() {
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [salario, setSalario] = useState("");
 
-  const [nome, setNome] = useState('');
-  const [cargo, setCargo] = useState('');
-  const [salario, setSalario] = useState('');
-
-  const {id} = useParams<EmpresaParams>();
+  const { id } = useParams<EmpresaParams>();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
-      .post(`http://localhost:8080/funcionarios/`, {nome: nome, cargo: cargo, salario: salario, empresa_id: id})
+      .post(`http://localhost:8080/funcionarios/`, {
+        nome: nome,
+        cargo: cargo,
+        salario: salario,
+        empresa_id: id,
+      })
       .then((res) => {
         console.log(res);
         console.log(res.data);
       });
-  }
+  };
 
-  const handlerChangeName = (event:any) => {
+  const handlerChangeName = (event: any) => {
     setNome(event.target.value);
-  }
+  };
 
-  const handlerChangeCargo = (event:any) => {
+  const handlerChangeCargo = (event: any) => {
     setCargo(event.target.value);
-  }
+  };
 
-  const handlerChangeSalario = (event:any) => {
+  const handlerChangeSalario = (event: any) => {
     setSalario(event.target.value);
-  }
+  };
 
   return (
     <>
@@ -55,20 +59,34 @@ function Empresa() {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
-              <Form.Control placeholder="Nome" value={nome} onChange={handlerChangeName}/>
+              <Form.Control
+                placeholder="Nome"
+                value={nome}
+                onChange={handlerChangeName}
+              />
             </Col>
             <Col>
-              <Form.Control placeholder="Cargo" value={cargo} onChange={handlerChangeCargo}/>
+              <Form.Control
+                placeholder="Cargo"
+                value={cargo}
+                onChange={handlerChangeCargo}
+              />
             </Col>
             <Col>
-              <Form.Control placeholder="Salário" value={salario} onChange={handlerChangeSalario}/>
+              <Form.Control
+                placeholder="Salário"
+                value={salario}
+                onChange={handlerChangeSalario}
+              />
             </Col>
             <Col>
-              <Button variant="success" type="submit">Adicionar</Button>
+              <Button variant="success" type="submit">
+                Adicionar
+              </Button>
             </Col>
           </Row>
         </Form>
-        <TableFuncionarios idEmpresa={id}/>
+        <TableFuncionarios idEmpresa={id} />
       </Container>
     </>
   );

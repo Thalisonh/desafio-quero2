@@ -28,8 +28,8 @@ public class EnderecoService {
 	@Autowired
 	private ViaCep cepService;
 
-	public Endereco getCep(String cep) {
-		Endereco endereco = cepService.buscaEnderecoPorCep(cep);
+	public EnderecoDTO getCep(String cep) {
+		EnderecoDTO endereco = cepService.buscaEnderecoPorCep(cep);
 		
 		return endereco; 
 	}
@@ -86,7 +86,7 @@ public class EnderecoService {
 		empresa.setId(dto.getEmpresa_id());
 		
 		entity.setEmpresa(empresa);
-		entity.setEstado(dto.getEstado());
+		entity.setEstado(dto.getUf());
 		entity.setLocalidade(dto.getLocalidade());
 		entity.setLogradouro(dto.getLogradouro());
 		entity.setNumero(dto.getNumero());

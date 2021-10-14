@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quero2.pay.dto.EnderecoDTO;
-import com.quero2.pay.entities.Endereco;
 import com.quero2.pay.service.EnderecoService;;
 
 @RestController
@@ -21,18 +21,21 @@ public class EnderecoController {
 	@Autowired
 	private EnderecoService service;
 
-	@GetMapping("/{cep}")
-	public ResponseEntity<Endereco> getCep(@PathVariable String cep) {
-		Endereco endereco = service.getCep(cep);
+	@PostMapping
+	public ResponseEntity<EnderecoDTO> getCep(@RequestBody EnderecoDTO dto) {
+		EnderecoDTO endereco = service.getCep(dto.getCep());
+		endereco.setComplemento(dto.getComplemento());
+		endereco.setNumero(dto.getNumero());
+		endereco.setEmpresa_id(dto.getEmpresa_id());
 		
 		return ResponseEntity.ok().body(endereco); 
 	}
 	
-	@GetMapping
-	public ResponseEntity<Page<EnderecoDTO>> findAll(Pageable pageable){
-		Page<EnderecoDTO> list = service.findAll(pageable);
+	@GetMapping("/{cep}")
+	public ResponseEntity<EnderecoDTO> findByCep(@PathVariable String cep){
+		EnderecoDTO endereco = service.getCep(cep);
 		
-		return ResponseEntity.ok().body(list);
+		return ResponseEntity.ok().body(endereco);
 	}
 	
 	@PutMapping("/{id}")

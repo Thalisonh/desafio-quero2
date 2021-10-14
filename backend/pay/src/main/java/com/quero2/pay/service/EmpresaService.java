@@ -84,10 +84,10 @@ public class EmpresaService {
 //		Optional<Endereco> enderecoObj = enderecoRepository.findById(dto.getEndereco_id());
 //		Endereco endereco = enderecoObj.orElseThrow(() -> new ResourceNotFoundException("Entity Endereco not found"));
 //		entity.setEndereco(endereco);
-		EnderecoDTO enderecoDTO = dto.getEndereco();
-		Endereco endereco = new Endereco();
-		enderecoService.copyDtoToEntity(endereco, enderecoDTO);
-		entity.setEndereco(endereco);
+//		EnderecoDTO enderecoDTO = dto.getEndereco();
+//		Endereco endereco = new Endereco();
+//		enderecoService.copyDtoToEntity(endereco, enderecoDTO);
+//		entity.setEndereco(endereco);
 
 //		for (FuncionarioDTO funcionarioDTO : dto.getFuncionarios()) {
 //			Optional<Funcionario> funcionarioObj = funcionarioRepository.findById(funcionarioDTO.getId());

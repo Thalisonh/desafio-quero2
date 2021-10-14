@@ -11,7 +11,7 @@ public class EnderecoDTO {
 	private String complemento;
 	private String bairro;
 	private String localidade;
-	private String estado;
+	private String uf;
 	private Long empresa_id;
 	
 	public EnderecoDTO() {
@@ -19,7 +19,7 @@ public class EnderecoDTO {
 	}
 
 	public EnderecoDTO(Long id, String cep, String logradouro, Integer numero, String complemento, String bairro,
-			String localidade, String estado, Long empresa_id) {
+			String localidade, String uf, Long empresa_id) {
 		this.id = id;
 		this.cep = cep;
 		this.logradouro = logradouro;
@@ -27,7 +27,7 @@ public class EnderecoDTO {
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.localidade = localidade;
-		this.estado = estado;
+		this.uf = uf;
 		this.empresa_id = empresa_id;
 	}
 	
@@ -39,7 +39,7 @@ public class EnderecoDTO {
 		complemento = entity.getComplemento();
 		bairro = entity.getBairro();
 		localidade = entity.getLocalidade();
-		estado = entity.getEstado();
+		uf = entity.getEstado();
 		empresa_id = entity.getEmpresa().getId();
 	}
 	
@@ -104,12 +104,12 @@ public class EnderecoDTO {
 		this.localidade = localidade;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	public Long getEmpresa_id() {
