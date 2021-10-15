@@ -20,7 +20,7 @@ function TableEmpresa() {
 
   useEffect(() => {
     axios
-      .get(`https://desafio-quero2.vercel.app/empresas?page=${activePage}&size=10`)
+      .get(`https://quero2-desafio.herokuapp.com/empresas?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });

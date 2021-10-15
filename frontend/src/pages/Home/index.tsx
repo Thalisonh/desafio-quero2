@@ -10,7 +10,7 @@ function Home() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
-      .post(`https://desafio-quero2.vercel.app/empresas/`, {
+      .post(`https://quero2-desafio.herokuapp.com/empresas/`, {
         nome: nome,
         telefone: telefone,
       })

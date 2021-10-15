@@ -7,7 +7,7 @@ type Props = {
 function ButtonDeleteEmpresa(idEmpresa: Props) {
     const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
         axios
-          .delete(`http://localhost:8080/empresas/${idEmpresa.idEmpresa}`)
+          .delete(`https://quero2-desafio.herokuapp.com/empresas/${idEmpresa.idEmpresa}`)
           .then((res) => {
             console.log(res);
             console.log(res.data);

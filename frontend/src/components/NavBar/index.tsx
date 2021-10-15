@@ -8,9 +8,6 @@ function NavBar() {
                     <Link to="/">
                         <h1>Home</h1>
                     </Link>
-                    <Link to="/cadastrar">
-                        <h1>Nova Empresa</h1>
-                    </Link>
                 </nav>
             </div>
         </div >

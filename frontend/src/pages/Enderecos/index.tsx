@@ -14,7 +14,7 @@ function Enderecos() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axios.get(`https://desafio-quero2.vercel.app/${cep}`).then((res) => {
+    axios.get(`https://quero2-desafio.herokuapp.com/${cep}`).then((res) => {
       setBairro(res.data["bairro"]);
       setCidade(res.data["localidade"]);
       setUf(res.data["uf"]);
@@ -27,7 +27,7 @@ function Enderecos() {
   const handleSubmitEndereco = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
-      .post(`https://desafio-quero2.vercel.app/`, {
+      .post(`https://quero2-desafio.herokuapp.com/`, {
         cep: cep,
         numero: numero,
         complemento: complemento,

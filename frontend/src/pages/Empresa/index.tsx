@@ -19,7 +19,7 @@ function Empresa() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
-      .post(`https://desafio-quero2.vercel.app/funcionarios/`, {
+      .post(`https://quero2-desafio.herokuapp.com/funcionarios/`, {
         nome: nome,
         cargo: cargo,
         salario: salario,

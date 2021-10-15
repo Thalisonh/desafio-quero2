@@ -21,7 +21,7 @@ function TableFuncionarios(idEmpresa : Props) {
 
   useEffect(() => {
     axios
-      .get(`https://desafio-quero2.vercel.app/funcionarios/${idEmpresa.idEmpresa}?page=${activePage}&size=10`)
+      .get(`https://quero2-desafio.herokuapp.com/funcionarios/${idEmpresa.idEmpresa}?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });
