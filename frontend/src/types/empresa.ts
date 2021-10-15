@@ -1,7 +1,14 @@
 export type Empresa = {
     id: number,
     nome: string,
-    telefone: string
+    telefone: string,
+    endereco : {
+        logradouro: string,
+        localidade: string,
+        numero: number,
+        uf: string,
+        cep: string,
+    }
 }
 
 export type EmpresaPage = {

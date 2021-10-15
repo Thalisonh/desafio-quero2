@@ -4,7 +4,9 @@ import NavBar from "../../components/NavBar";
 import TableFuncionarios from "../../components/TableFuncionarios";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 type EmpresaParams = {
   id?: string | undefined;
@@ -14,8 +16,17 @@ function Empresa() {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [salario, setSalario] = useState("");
+  const [nomeEmpresa, setNomeEmpresa] = useState("");
 
   const { id } = useParams<EmpresaParams>();
+
+  useEffect(() => {
+    axios
+      .get(`https://quero2-desafio.herokuapp.com/funcionarios/${id}`)
+      .then((response) => {
+        setNomeEmpresa(response.data["nomeEmpresa"])
+      });
+  }, [nomeEmpresa]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
@@ -47,9 +58,8 @@ function Empresa() {
     <>
       <Container>
         <NavBar />
-        <h1>Quero2</h1>
-        <h2>Rua teste</h2>
-        <h3>Funcionarios</h3>
+        <h1>Empresa: </h1>
+        <h3>{nomeEmpresa}</h3>
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>

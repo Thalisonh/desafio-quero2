@@ -2,7 +2,8 @@ export type Funcionario = {
     id: number,
     nome: string,
     cargo: string,
-    salario: number
+    salario: number,
+    nomeEmpresa: string,
 }
 
 export type FuncionarioPage = {

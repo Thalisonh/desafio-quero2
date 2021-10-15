@@ -21,7 +21,7 @@ function TableFuncionarios(idEmpresa : Props) {
 
   useEffect(() => {
     axios
-      .get(`https://quero2-desafio.herokuapp.com/funcionarios/${idEmpresa.idEmpresa}?page=${activePage}&size=10`)
+      .get(`https://quero2-desafio.herokuapp.com/funcionarios/empresas/${idEmpresa.idEmpresa}?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });
@@ -41,6 +41,7 @@ function TableFuncionarios(idEmpresa : Props) {
             <th>Nome</th>
             <th>Cargo</th>
             <th>Salário</th>
+            <th>Empresa</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +50,8 @@ function TableFuncionarios(idEmpresa : Props) {
               <td>{item.id}</td>
               <td>{item.nome}</td>
               <td>{item.cargo}</td>
-              <td>{item.salario}</td>
+              <td>R$ {item.salario}</td>
+              <td>{item.nomeEmpresa}</td>
             </tr>
           ))}
         </tbody>

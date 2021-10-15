@@ -8,7 +8,7 @@ function ButtonEnderecos(idEmpresa: Props) {
   var link = `/endereco/${idEmpresa.idEmpresa}`;
   return (
     <button type="button" className="btn btn-success">
-      <Link to={link}>Enderecos</Link>
+      <Link to={link} style={{ textDecoration: 'none', color: 'white' }}>Enderecos</Link>
     </button>
   );
 }

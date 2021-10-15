@@ -15,8 +15,7 @@ function Routes() {
         </Route>
         <Route path="/empresa/:id" component={Empresa}>
         </Route>
-        <Route path="/endereco">
-          <Enderecos />
+        <Route path="/endereco/:id" component={Enderecos}>
         </Route>
       </Switch>
     </BrowserRouter>
