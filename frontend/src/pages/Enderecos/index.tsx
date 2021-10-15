@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
-import TableFuncionarios from "../../components/TableFuncionarios";
 
 function Enderecos() {
   const [cep, setCep] = useState("");
@@ -16,7 +14,7 @@ function Enderecos() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axios.get(`http://localhost:8080/${cep}`).then((res) => {
+    axios.get(`https://desafio-quero2.vercel.app/${cep}`).then((res) => {
       setBairro(res.data["bairro"]);
       setCidade(res.data["localidade"]);
       setUf(res.data["uf"]);
@@ -29,7 +27,7 @@ function Enderecos() {
   const handleSubmitEndereco = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:8080/`, {
+      .post(`https://desafio-quero2.vercel.app/`, {
         cep: cep,
         numero: numero,
         complemento: complemento,

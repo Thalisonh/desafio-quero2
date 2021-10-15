@@ -10,7 +10,7 @@ function Home() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
-      .post(`http://localhost:8080/empresas/`, {
+      .post(`https://desafio-quero2.vercel.app/empresas/`, {
         nome: nome,
         telefone: telefone,
       })

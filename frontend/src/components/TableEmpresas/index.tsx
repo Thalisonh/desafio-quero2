@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 import { EmpresaPage } from "../../types/empresa";
 import ButtonDeleteEmpresa from "../ButtonDeleteEmpresa";
 import ButtonEnderecos from "../ButtonEnderecos";
@@ -21,7 +20,7 @@ function TableEmpresa() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/empresas?page=${activePage}&size=10`)
+      .get(`https://desafio-quero2.vercel.app/empresas?page=${activePage}&size=10`)
       .then((response) => {
         setPage(response.data);
       });
