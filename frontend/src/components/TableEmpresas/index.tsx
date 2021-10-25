@@ -39,7 +39,7 @@ function TableEmpresa() {
             <th>ID</th>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>Endereço</th>
+            {/* <th>Endereço</th> */}
           </tr>
         </thead>
         <tbody>
@@ -48,7 +48,7 @@ function TableEmpresa() {
               <td>{item.id}</td>
               <td>{item.nome}</td>
               <td>{item.telefone}</td>
-              <td>{item.endereco.logradouro}, {item.endereco.numero}, {item.endereco.localidade} - {item.endereco.uf}, {item.endereco.cep}</td>
+              {/* <td>{item.endereco.logradouro}, {item.endereco.numero}, {item.endereco.localidade} - {item.endereco.uf}, {item.endereco.cep}</td> */}
               <td>
                 <ButtonFuncionarios idEmpresa={item.id} />
               </td>
