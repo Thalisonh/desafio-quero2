@@ -26,7 +26,7 @@ public class EmpresaService {
 	public Page<EmpresaDTO> findAll(Pageable pageable) {
 		Page<Empresa> empresas = repository.findAll(pageable);
 
-		return empresas.map(x -> new EmpresaDTO(x, x.getEndereco()));
+		return empresas.map(x -> new EmpresaDTO(x));
 	}
 
 	@Transactional(readOnly = true)
